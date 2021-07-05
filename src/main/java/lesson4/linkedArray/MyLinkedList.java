@@ -273,11 +273,5 @@ public class MyLinkedList<E> implements Iterable<E> {
         }
     }
 
-    // Итератор
-
-
-
-    // Итератор конец
-
 
 }
