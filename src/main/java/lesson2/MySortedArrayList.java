@@ -2,6 +2,7 @@ package lesson2;
 
 public class MySortedArrayList<T extends Comparable<T>> extends MyArrayList<T> {
 
+
     @Override
     public void add(T item) {
         int i = 0;
@@ -31,5 +32,18 @@ public class MySortedArrayList<T extends Comparable<T>> extends MyArrayList<T> {
         }
 
         return -1;
+    }
+    public int binaryRecursionSearch(T item, int first, int last) {
+        int middle = first + (last - first)/2;
+        if (item.compareTo(get(middle)) == 0){
+            return middle;
+        } else if (first == last){
+            System.out.println("No Solution");
+            return -1;
+        } else if (item.compareTo(get(middle)) < 0) {
+            return binaryRecursionSearch(item, first, middle);
+        } else {
+            return binaryRecursionSearch(item, middle, last);
+        }
     }
 }

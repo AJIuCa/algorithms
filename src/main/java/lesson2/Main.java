@@ -16,8 +16,8 @@ public class Main {
     public static void startApp(){
 
         Random random = new Random();
-        int capacity = 100000;
-        MyArrayList<Integer> bigArray = new MyArrayList<>(capacity );
+        int capacity = 1000000;
+        MyArrayList<Integer> bigArray = new MyArrayList<>(capacity);
         for (int i = 0; i < capacity ; i++) {
             bigArray.add(random.nextInt((int)Math.pow(2,31)-1));
         }
@@ -25,15 +25,22 @@ public class Main {
 
         MyArrayList<Integer> copyArray1 = new MyArrayList(capacity);
         copyArray1.copy(bigArray);
-//        System.out.println(copyArray1);
+
 
         MyArrayList<Integer> copyArray2 = new MyArrayList(capacity);
         copyArray2.copy(bigArray);
-//        System.out.println(copyArray2);
+
 
         MyArrayList<Integer> copyArray3 = new MyArrayList(capacity);
         copyArray3.copy(bigArray);
-//        System.out.println(copyArray3);
+
+        MyArrayList<Integer> copyArray4 = new MyArrayList(capacity);
+        copyArray4.copy(bigArray);
+
+        long startQuickSort = System.currentTimeMillis();
+        copyArray4.quickSort(0, copyArray4.size()-1);
+        long endQuickSort = System.currentTimeMillis();
+        System.out.println("QuickSort time = " + (endQuickSort-startQuickSort));
 
         long startSelectionTime = System.currentTimeMillis();
         copyArray1.selectionSort();
@@ -51,6 +58,24 @@ public class Main {
         copyArray3.bubbleSort();
         long endBubbleSortTime = System.currentTimeMillis();
         System.out.println("Bubble sort time = " + (endBubbleSortTime-startBubbleSortTime));
+
+
+
+        System.out.println("********* Recursion sorting *********");
+
+        MySortedArrayList<Integer> mySortedArrayList = new MySortedArrayList();
+        mySortedArrayList.add(111);
+        mySortedArrayList.add(25);
+        mySortedArrayList.add(10);
+        mySortedArrayList.add(64);
+        mySortedArrayList.add(348);
+        for (int i = 0; i <mySortedArrayList.size(); i++){
+            System.out.println(mySortedArrayList.get(i));
+        }
+        int num =64;
+        System.out.println("Find number = " + num);
+        System.out.println("Index " + num + " = " +
+                mySortedArrayList.binaryRecursionSearch(num, 0, mySortedArrayList.size()));
 
     }
 }

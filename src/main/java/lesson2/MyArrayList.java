@@ -39,7 +39,7 @@ public class MyArrayList<T extends Comparable<T>> {
             throw new ArrayIndexOutOfBoundsException();
         }
 
-        if (index == size){
+        if (index > size){
             T[] list2 = Arrays.copyOf(list, (size/2 + size) + 1);
             list = list2;
         }
@@ -170,6 +170,36 @@ public class MyArrayList<T extends Comparable<T>> {
                     swap(j + 1, j);
                 }
             }
+        }
+    }
+
+    public void quickSort (int firstPosition, int lastPosition) {
+        if (firstPosition >= lastPosition) {
+            return;
+        }
+        int middle = firstPosition + (lastPosition-firstPosition)/2;
+        T opora = list[middle];
+
+        int i = firstPosition;
+        int j = lastPosition;
+        while (i <= j) {
+            while (less(list[i], opora)){
+                i++;
+            }
+            while (less(opora,list[j])) {
+                j--;
+            }
+            if (i <= j) {
+                swap(i,j);
+                i++;
+                j--;
+            }
+        }
+        if (firstPosition < j) {
+            quickSort(firstPosition,j);
+        }
+        if (lastPosition > i) {
+            quickSort(i, lastPosition);
         }
     }
 
