@@ -32,13 +32,35 @@ public class Main {
 
 //        System.out.println(chm);
 
-        LinearProbingHashMap<Integer, String> lphm = new LinearProbingHashMap<>();
+//        LinearProbingHashMap<Integer, String> lphm = new LinearProbingHashMap<>();
+//
+//        lphm.put(1, "one");
+//        lphm.put(222, "222e");
+//        lphm.put(4545, "4545e");
+//
+//        System.out.println(lphm.get(222));
 
-        lphm.put(1, "one");
-        lphm.put(222, "222e");
-        lphm.put(4545, "4545e");
+        ChainingHashMap chainingHashMap = new ChainingHashMap();
+        System.out.println(chainingHashMap.isEmpty());
+        chainingHashMap.put("asd", "privet");
+        chainingHashMap.put("qwerty", "poka");
 
-        System.out.println(lphm.get(222));
+        System.out.println(chainingHashMap.get("asd"));
+        System.out.println(chainingHashMap.get("qwerty"));
+
+        System.out.println("\nудаление\n");
+
+        chainingHashMap.remove("asd");
+        chainingHashMap.remove("qwerty");
+
+        System.out.println(chainingHashMap.get("asd"));
+        System.out.println(chainingHashMap.get("qwerty"));
+
+        System.out.println(chainingHashMap.contains("asd"));
+        System.out.println(chainingHashMap.contains("qwerty"));
+
+        System.out.println(chainingHashMap.size());
+        System.out.println(chainingHashMap.isEmpty());
 
     }
 }
