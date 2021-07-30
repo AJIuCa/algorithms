@@ -95,6 +95,7 @@ public class ChainingHashMap<K, V> {
             if(key.equals(node.key)){
                 st[i].remove();
                 size--;
+                return;
             }
         }
     }
